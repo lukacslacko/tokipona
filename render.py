@@ -1,6 +1,23 @@
+from dataclasses import dataclass
+
+@dataclass
+class Glyph:
+  name: str
+  x: float
+  y: float
+  size: float
+
+@dataclass
+class Container:
+  name: str
+  x: float
+  y: float
+  w: float
+  h: float
+
 class Render:
   def __init__(self):
-    pass
+    self._glyphs = []
   
   def valid_word(self, word: str) -> bool:
     return True
@@ -15,10 +32,14 @@ class Render:
     return 1.0
   
   def word(self, word: str, x: float, y: float, size: float) -> None:
-    pass
+    self._glyphs.append(Glyph(word, x, y, size))
   
   def container(self, word: str, x: float, y: float, w: float, h: float) -> None:
-    pass
+    self._glyphs.append(Container(word, x, y, w, h))
   
   def render(self):
-    pass
+    for glyph in reversed(self._glyphs):
+      if isinstance(glyph, Glyph):
+        print(f"draw logo_{glyph.name}({glyph.size}, 1, {glyph.x}, {glyph.y});")
+      if isinstance(glyph, Container):
+        print(f"draw container_{glyph.name}({glyph.x}, {glyph.y}, {glyph.w}, {glyph.h});")
