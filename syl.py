@@ -128,7 +128,7 @@ for consonant in consonants:
     """)
     for path in con:
       if path.pen == OUTER:
-        mp.append("clear({path.path});")
+        mp.append(f"clear({path.path});")
     for path in con:
       mp.append(f"      draw {path.path} withpen {pens[path.pen]};")
     mp.append(f"""
