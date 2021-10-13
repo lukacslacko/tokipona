@@ -29,7 +29,7 @@ show_grid := true;
 pen outer_pen, inner_pen, grid_pen;
 outer_pen := pencircle scaled 1.5bp yscaled 0.2 rotated 30;
 inner_pen := pencircle scaled 0.7bp yscaled 0.2 rotated 30;
-grid_pen := pencircle scaled 0.2b withcolor .5white;
+grid_pen := pencircle scaled 0.2bp withcolor .5white;
 
 def clear(expr p) = 
   fill buildcycle(p) withcolor white; 
