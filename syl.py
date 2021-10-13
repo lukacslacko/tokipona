@@ -119,7 +119,7 @@ for consonant in consonants:
     col += 1
     if show_syls:
       table.append(f"draw syllable_{consonant}{vowel}(1, 0, {row*25}, {col*50});");
-      table.append(f"draw syllable_{consonant}n{vowel}(1, 0, {row*25}, {25+col*50});");
+      table.append(f"draw syllable_{consonant}{vowel}n(1, 0, {row*25}, {25+col*50});");
     con = consonants[consonant]
     vow = vowels[vowel]
     mp.append(f"""
