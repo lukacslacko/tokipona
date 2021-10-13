@@ -154,7 +154,7 @@ for consonant in consonants:
     """)
     for path in con:
       if path.pen == OUTER:
-        mp.append(f"clear((path.path}) yscaled 0.75 shifted (0, 2.5));")
+        mp.append(f"clear(({path.path}) yscaled 0.75 shifted (0, 2.5));")
     for path in con:
       mp.append(f"      draw ({path.path}) yscaled 0.75 shifted (0, 2.5) withpen {pens[path.pen]};")
     mp.append(f"""
