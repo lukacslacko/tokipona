@@ -28,6 +28,8 @@ std::string parse(std::string text, float width) {
       bool ic;
       std::string t;
       std::string cc;
+      bool cp;
+      char d;
       int pi;
       int di;
       Block* p;
@@ -67,12 +69,75 @@ std::string parse(std::string text, float width) {
       }
     }
   };
-  Block* m=new Block(true, "block", text, nullptr, 1, 0, 0, 0);
+  Block* m=new Block(true, "block", text, nullptr, 1, 1, 0, 0);
   //parse
+  Block* cpb=m;
+  while (true) {
+    if (cpb->ic) {
+      if (cpb->cp) {
+        if (cpb->pi==cpb->c.size()) {
+          if (cpb->d=='-') {
+            float h;
+            for (Block* b : cpb->c) {
+              if (b->h>h) {
+                h=b->h;
+              }
+            }
+            this.w=0;
+            for (Block* b : cpb->c) {
+              b->scale(h/b->h);
+              this.w+=b->w;
+            }
+            this.h=h;
+            float n=-this.w/2;
+            for (Block* b : cpb->c) {
+              n+=b->w/2;
+              b->shift(n, 0);
+              n+=b->w/2;
+            }
+          } else if (cpb->d=='|') {
+            float w;
+            for (Block* b : cpb->c) {
+              if (b->w>w) {
+                w=b->w;
+              }
+            }
+            this.h=0;
+            for (Block* b : cpb->c) {
+              b->scale(w/b->w);
+              this.h+=b->h;
+            }
+            this.w=w;
+            float n=-this.h/2;
+            for (Block* b : cpb->c) {
+              n+=b->h/2;
+              b->shift(0, n);
+              n+=b->h/2;
+            }
+          }
+          cpb=cpb->p;
+          if (cpb==nullptr) {
+            break;
+          }
+          cpb->pi++;
+        } else {
+          cpb=cpb->c[cpb->pi];
+        }
+      } else {
+        char* c=cpb->cc.data();
+        while (true) {
+        }
+        cpb->cp=true;
+      }
+    } else {
+      cpb=cpb->p;
+      cpb->pi++;
+    }
+  }
   m->scale(width/m->w);
   //draw
   Block* cdb=m;
-  while true {
+  while (true) {
     if (cdb->di==cdb->c.size()) {
       if (cdb->ic) {
         out+="render.container('"+cdb->t+"', "+std::to_string(cdb->x)+", "+std::to_string(cdb->y)+", "+std::to_string(cdb->w)+", "+std::to_string(cdb->h)+")\n";
