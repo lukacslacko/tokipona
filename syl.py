@@ -131,7 +131,7 @@ for consonant in consonants:
       mp.append(f"        draw {path.path} withpen {pens[path.pen]};")
     mp.append(f"""
           );
-          clip tmp to {con[0].path};
+          clip tmp to buildcycle({con[0].path});
         ) scaled scale yscaled yscale shifted (x, y);
       enddef;
     """)
