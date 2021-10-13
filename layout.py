@@ -110,4 +110,6 @@ def _split(s: str) -> tuple[list[str], str]:
 
 render = Render()
 print(layout("(a - b) | c", render))
+print()
 print(layout("(x | y) - z", render))
+print(layout("(((jan|utala)-(pona|ni))|li[lawa]|.[])-((mi-lawa)|e[(jan|utala)-(pona|ni)]|.[])", render))
