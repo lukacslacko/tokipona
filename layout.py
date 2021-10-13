@@ -119,5 +119,5 @@ print(layout("(x | y) - z", render))
 print()
 
 ex1 = layout("(((jan|utala)-(pona|ni))|li[lawa]|.[])-((mi-lawa)|e[(jan|utala)-(pona|ni)]|.[])", render)
-ex1.scale(3)
+ex1.scale(6)
 print(ex1)
