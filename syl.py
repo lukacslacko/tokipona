@@ -107,6 +107,8 @@ vowel_transform = {
   "K": Transform(0.7, 0, 3),
 }
 
+table = []
+
 row = 0
 for consonant in consonants:
   row += 1
@@ -114,8 +116,8 @@ for consonant in consonants:
   for vowel in vowels:
     col += 1
     if show_syls:
-      mp.append(f"draw syllable_{consonant}{vowel}(1, 0, {row*25}, {col*50});");
-      mp.append(f"draw syllable_{consonant}n{vowel}(1, 0, {row*25}, {25+col*50});");
+      table.append(f"draw syllable_{consonant}{vowel}(1, 0, {row*25}, {col*50});");
+      table.append(f"draw syllable_{consonant}n{vowel}(1, 0, {row*25}, {25+col*50});");
     con = consonants[consonant]
     vow = vowels[vowel]
     mp.append(f"""
@@ -166,3 +168,4 @@ for consonant in consonants:
     """)
           
 print("\n".join(mp))
+print("\n".join(table))
