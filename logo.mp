@@ -35,7 +35,7 @@ def logo_jan(expr s, ys, dx, dy) =
     clear(jan_a)
     draw jan_a withpen outer_pen;
     jan_b = (
-      (0, 9) .. {down} (2, 2) {dir -20} .. (10, -5) .. (5, -10) {left} .. {left} (-5, -10) .. (-10, -5) .. {dir 20} (-2, 2) {up} .. cycle
+      (0, 8) .. {down} (2, 2) {dir -20} .. (10, -5) .. (5, -10) {left} .. {left} (-5, -10) .. (-10, -5) .. {dir 20} (-2, 2) {up} .. cycle
     ) tr(s, ys, dx, dy);
     clear(jan_b);
     draw jan_b withpen outer_pen;
