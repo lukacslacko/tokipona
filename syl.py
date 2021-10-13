@@ -77,7 +77,7 @@ mp.append("""
 path consonant_j_contour, consonant_j_tick;
 consonant_j_contour := (5, 4) {curl 0.2} .. (-4, 9) .. (-10, 0) .. (0, -10) .. (10, 0) .. (4, 10) .. (-2, 1);
 consonant_j_contour := consonant_j_contour cutafter consonant_j_contour;
-consonant_j_tick := (5,7) {dir 220} .. (2,6)
+consonant_j_tick := (5,7) {dir 220} .. (2,6);
 
 path consonant_k_contour, consonant_k_a, consonant_k_b;
 consonant_k_contour :=
