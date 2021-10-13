@@ -11,7 +11,7 @@ pens = {
 @dataclass
 class Path:
   path: str
-  pen: Pen
+  pen: int
     
 @dataclass
 class Transform:
