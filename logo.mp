@@ -136,6 +136,7 @@ def logo_toki(expr s, ys, dx, dy) =
     draw toki_b tr(s, ys, dx, dy);
     toki_c := (3, 4) .. (6, -2) .. (3, -8) .. (0, -2) .. cycle;
     toki_c := toki_c cutbefore toki_b;
+    toki_c := toki_c cutafter toki_b;
     draw toki_c tr(s, ys, dx, dy);
   )
 enddef;
