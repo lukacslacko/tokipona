@@ -152,7 +152,7 @@ std::string parse(std::string text, float width, Render render) {
               break;
             }
             if (*c=='|') {
-              if (cpb->d=='-') { delete m; return; }
+              if (cpb->d=='-') { delete m; return "sbv"; }
               if (t.size()) {
                 cpb->c.push_back(new Block(false, t, "", cpb, render.width(t), render.height(t), 0, 0));
               }
@@ -161,7 +161,7 @@ std::string parse(std::string text, float width, Render render) {
               continue;
             }
             if (*c=='-') {
-              if (cpb->d=='|') { delete m; return; }
+              if (cpb->d=='|') { delete m; return "sbh"; }
               if (t.size()) {
                 cpb->c.push_back(new Block(false, t, "", cpb, render.width(t), render.height(t), 0, 0));
               }
