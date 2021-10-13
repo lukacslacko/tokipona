@@ -139,6 +139,7 @@ def logo_toki(expr s, ys, dx, dy) =
     toki_c := toki_c cutafter toki_b;
     draw toki_c tr(s, ys, dx, dy);
     toki_d := (-2, -1) {right} .. (7, 0);
+    toki_d := toki_d cutafter toki_c;
     toki_e := toki_d shifted (0, -2);
     draw toki_d tr(s, ys, dx, dy);
     draw toki_e tr(s, ys, dx, dy);
