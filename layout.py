@@ -35,10 +35,11 @@ class Block:
   def y(self) -> float:
     return self._y
   
-  def debug(self) -> None:
-    print(f"{self._word}: x={self._x}, y={self._y}, width={self._width}, height={self._height}")
+  def __str__(self) -> str:
+    result = f"{self._word}: x={self._x}, y={self._y}, width={self._width}, height={self._height}"
     for block in self._blocks:
-      block.debug()
+      result += "\n" + str(block)
+    return result
   
 def layout(s: str, render: Render) -> Block:
   s.replace(" ", "")
@@ -105,5 +106,5 @@ def _split(s: str) -> tuple[list[str], str]:
   return res, sep
 
 render = Render()
-layout("(a - b) | c", render).debug()
-layout("(x | y) - z", render).debug()
+print(layout("(a - b) | c", render))
+print(layout("(x | y) - z", render))
