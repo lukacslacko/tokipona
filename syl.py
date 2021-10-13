@@ -160,3 +160,4 @@ for consonant in consonants:
       enddef;
     """)
     
+print("\n".join(mp))
