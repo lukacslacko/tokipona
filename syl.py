@@ -51,13 +51,6 @@ nasal_contour :=
   (0, -2) .. (-10, -7) {down} .. (-6, -10) {right} .. {up} (-3, -6) {down} ..
   {right} (0, -10) {right} .. {up} (3, -6) {down} .. {right} (6, -10) ..
   {up} (10, -7) .. cycle;
-
-def nasal_suffix(expr s, ys, dx, dy) =
-  image(
-    clear(nasal_contour tr(s, ys, dx, dy));
-    draw nasal_contour tr(s, ys, dx, dy) withpen po;
-  )
-enddef;
 """)
 
 vowels = {
@@ -140,12 +133,12 @@ for consonant in consonants:
     mp.append(f"""
       def syllable_{consonant}{vowel}n(expr scale, yscale, x, y) =
         image(
-          clear(nasal_end);
-          draw nasal_end withpen outer_pen;
+          clear(nasal_suffix);
+          draw nasal_suffix withpen outer_pen;
           clear({con[0].path} yscaled 0.75 shifted (0, 2.5));
     """)    
     for path in con:
-      mp.append(f"      draw {path.path} yscaled 0.7 shifted (0, 2.5) withpen {pens[path.pen]};")
+      mp.append(f"      draw {path.path} yscaled 0.75 shifted (0, 2.5) withpen {pens[path.pen]};")
     mp.append(f"""
           picture tmp;
           tmp = image(
@@ -155,7 +148,7 @@ for consonant in consonants:
       mp.append(f"        draw {path.path} scaled {transform.scale} shifted ({transform.dx}, {transform.dy}) withpen {pens[path.pen]};")
     mp.append(f"""
           );
-          clip tmp to {con[0].path};
+          clip tmp to buildcycle({con[0].path});
           draw tmp;
           draw grid;
         ) scaled scale yscaled yscale shifted (x, y)
