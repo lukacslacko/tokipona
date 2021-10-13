@@ -9,7 +9,7 @@ def box(expr xa, ya, xb, yb, r) =
   ((xa, yb-r) {up} .. {right} (xa+r, yb) ..
   (xb-r, yb) {right} .. {down} (xb, yb-r) ..
   (xb, ya+r) {down} .. {left} (xb-r, ya) ..
-  (xa+r, ya) {left} .. {up} (xa, ya+r) .. cycle) scaled sc
+  (xa+r, ya) {left} .. {up} (xa, ya+r) .. cycle)
 enddef;
 
 def sq =
