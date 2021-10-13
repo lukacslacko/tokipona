@@ -175,6 +175,14 @@ std::string parse(std::string text, float width, Render render) {
               coc="";
               continue;
             }
+            if (*c=='(') {
+              if (t.size()) {delete m;return "pin";}
+              d=1;
+              woo=true;
+              coc="";
+              t="block";
+              continue;
+            }
             t+=*c;
           }
         }
