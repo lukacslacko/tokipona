@@ -92,7 +92,7 @@ def _split(s: str) -> tuple[list[str], char]:
       part += c
     elif c in "-|" and depth == 0 and brack == 0:
       if sep != "" and sep != c:
-        throw Error(f"- | in {s}")
+        raise Error(f"- | in {s}")
       sep = c
       res.append(part)
       part = ""
@@ -101,7 +101,7 @@ def _split(s: str) -> tuple[list[str], char]:
   if depth == 0 and brack == 0:
     res.append(part)
   else:
-    throw Error(f"depth {depth}, brack {brack}")
+    raise Error(f"depth {depth}, brack {brack}")
   return res, sep
 
 render = Render()
