@@ -42,11 +42,14 @@ class Block:
     return result
   
 def layout(s: str, render: Render) -> Block:
-  s.replace(" ", "")
+  s = s.replace(" ", "")
   pieces, dir = _split(s)
   if len(pieces) == 1:
     word = pieces[0]
-    if "[" in word:
+    if word[0] == "(":
+      block = layout(word[1:-1], render)
+      return Block("()", block.width(), block.height(), block.x(), block.y(), [block])
+    elif "[" in word:
       i = word.index("[")
       block = layout(word[i+1:-1], render)
       return Block(word[:i], block.width(), block.height(), block.x(), block.y(), [block])
