@@ -2,7 +2,7 @@ boolean show_grid;
 show_grid := true;
 
 pen outer_pen, inner_pen, grid_pen;
-outer_pen := pencircle scaled 1.5bp yscaled 0.2 rotated 30;
+outer_pen := pencircle scaled 1bp yscaled 0.2 rotated 30;
 inner_pen := pencircle scaled 0.7bp yscaled 0.2 rotated 30;
 grid_pen := pencircle scaled 0.2bp;
 
@@ -41,8 +41,8 @@ def logo_jan(expr s, ys, dx, dy) =
     ) tr(s, ys, dx, dy);
     clear(jan_b);
     draw jan_b;
-    draw ((-2.5, 2) {down} .. (-1, 1) .. {dir 100} (1, 7) ) tr(s, ys, dx, dy);
-    draw fullcircle shifted(-1, 6) tr(s, ys, dx, dy);
+    draw ((-2.5, 2) {down} .. (-1, 1) .. {dir 100} (1, 6) ) tr(s, ys, dx, dy);
+    draw fullcircle scaled 0.5 shifted(-0.5, 5) tr(s, ys, dx, dy);
     draw sq tr(s, ys, dx, dy);
   );
 enddef;
