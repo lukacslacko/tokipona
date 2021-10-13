@@ -18,9 +18,10 @@
 #include <string>
 #include <vector>
 #include <regex>
+#include "render.h"
+#include <cstring>
 
-std::string parse(std::string text, float width) {
-  std::string out;
+void parse(std::string text, float width, Render render) {
   text=regex_replace(text,regex("\\s"),"");
   class Block;
   class Block {
@@ -125,7 +126,56 @@ std::string parse(std::string text, float width) {
         }
       } else {
         char* c=cpb->cc.data();
+        c--;
+        bool woo;
+        string t;
+        int d;
+        string coc;
         while (true) {
+          c++;
+          if (woo) {
+            if (strchr("[(",*c)) {d++;}
+            if (strchr("])",*c)) {d--;}
+            if (d) {
+              coc+=*c;
+              continue;
+            }
+            woo=false;
+            cpb->c.push_back(new Block(true, t, coc, cpb, 1, 0, 0, 0));
+            t="";
+          } else {
+            if (*c==0) {
+              if (t.size()) {
+                cpb->c.push_back(new Block(false, t, "", cpb, render.width(t), render.height(t), 0, 0));
+              }
+              break;
+            }
+            if (*c=='|') {
+              if (cpb->d=='-') { return; }
+              if (t.size()) {
+                cpb->c.push_back(new Block(false, t, "", cpb, render.width(t), render.height(t), 0, 0));
+              }
+              cpb->d='|';
+              t="";
+              continue;
+            }
+            if (*c=='-') {
+              if (cpb->d=='|') { return; }
+              if (t.size()) {
+                cpb->c.push_back(new Block(false, t, "", cpb, render.width(t), render.height(t), 0, 0));
+              }
+              cpb->d='-';
+              t="";
+              continue;
+            }
+            if (*c=='[') {
+              d=1;
+              woo=true;
+              coc="";
+              continue;
+            }
+            t+=*c;
+          }
         }
         cpb->cp=true;
       }
@@ -140,9 +190,9 @@ std::string parse(std::string text, float width) {
   while (true) {
     if (cdb->di==cdb->c.size()) {
       if (cdb->ic) {
-        out+="render.container('"+cdb->t+"', "+std::to_string(cdb->x)+", "+std::to_string(cdb->y)+", "+std::to_string(cdb->w)+", "+std::to_string(cdb->h)+")\n";
+        render.container(cdb->t, cdb->x, cdb->y, cdb->w, cdb->h);
       } else {
-        out+="render.word('"+cdb->t+"', "+std::to_string(cdb->x)+", "+std::to_string(cdb->y)+", "+std::to_string(cdb->w)+", "+std::to_string(cdb->h)+")\n";
+        render.word(cdb->t, cdb->x, cdb->y, cdb->w, cdb->h);
       }
       cdb=cdb->p;
       if (cdb==nullptr) {
@@ -153,7 +203,6 @@ std::string parse(std::string text, float width) {
     }
     cdb=cdb->c[cdb->di];
   }
-  out+="render.render()\n";
+  render.render()
   delete m;
-  return out;
 }
