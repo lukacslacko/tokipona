@@ -42,7 +42,7 @@ def logo_jan(expr s, ys, dx, dy) =
     draw jan_b withpen outer_pen;
     pickup inner_pen;
     draw ((-2.5, 2) {down} .. (-1, 1) .. {dir 100} (2, 7) ) tr(s, ys, dx, dy);
-    fullcircle shifted(-2, 6) tr(s, ys, dx, dy);
+    draw fullcircle shifted(-2, 6) tr(s, ys, dx, dy);
     draw sq tr(s, ys, dx, dy);
   );
 enddef;
