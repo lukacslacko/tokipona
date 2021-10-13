@@ -147,8 +147,8 @@ for consonant in consonants:
     mp.append(f"""
       def syllable_{consonant}{vowel}n(expr scale, yscale, x, y) =
         image(
-          clear(nasal_suffix);
-          draw nasal_suffix withpen outer_pen;
+          clear(nasal_contour);
+          draw nasal_contour withpen outer_pen;
           clear({con[0].path} yscaled 0.75 shifted (0, 2.5));
     """)    
     for path in con:
