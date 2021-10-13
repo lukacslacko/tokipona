@@ -27,7 +27,7 @@ mp = []
 mp.append(f"""
 
 boolean show_grid;
-show_grid := {"true" if show_grid else "false"};
+show_grid := {'true' if show_grid else 'false'};
 
 pen outer_pen, inner_pen, grid_pen;
 outer_pen := pencircle scaled 1.5bp yscaled 0.2 rotated 30;
