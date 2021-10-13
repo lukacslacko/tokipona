@@ -42,7 +42,7 @@ class Block:
   
 def layout(s: str, render: Render) -> Block:
   s.replace(" ", "")
-  pieces, dir = self._split(s)
+  pieces, dir = _split(s)
   if len(pieces) == 1:
     word = pieces[0]
     if "[" in word:
