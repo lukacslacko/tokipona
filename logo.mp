@@ -30,7 +30,7 @@ enddef;
 
 def logo_jan(expr s, ys, dx, dy) =
   image(
-    path jan_a;
+    path jan_a, jan_b;
     jan_a = box(-7, 0, 7, 10, 4) tr(s, ys, dx, dy);
     clear(jan_a)
     draw jan_a withpen outer_pen;
