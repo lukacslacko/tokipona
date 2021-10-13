@@ -1,5 +1,8 @@
 from dataclasses import dataclass
 
+show_grid = True
+show_syls = True
+
 INNER = 0
 OUTER = 1
   
@@ -21,10 +24,10 @@ class Transform:
 
 mp = []
 
-mp.append("""
+mp.append(f"""
 
 boolean show_grid;
-show_grid := true;
+show_grid := {"true" if show_grid else "false"};
 
 pen outer_pen, inner_pen, grid_pen;
 outer_pen := pencircle scaled 1.5bp yscaled 0.2 rotated 30;
@@ -104,8 +107,15 @@ vowel_transform = {
   "K": Transform(0.7, 0, 3),
 }
 
+row = 0
 for consonant in consonants:
+  row += 1
+  col = 0
   for vowel in vowels:
+    col += 1
+    if show_syls:
+      mp.append(f"draw syllable_{consonant}{vowel}(1, 0, {row*25}, {col*50});");
+      mp.append(f"draw syllable_{consonant}n{vowel}(1, 0, {row*25}, {25+col*50});");
     con = consonants[consonant]
     vow = vowels[vowel]
     mp.append(f"""
@@ -154,5 +164,5 @@ for consonant in consonants:
         ) scaled scale yscaled yscale shifted (x, y)
       enddef;
     """)
-    
+          
 print("\n".join(mp))
