@@ -1,3 +1,6 @@
+boolean show_grid;
+show_grid := true;
+
 def tr(expr s, ys, dx, dy) = scaled (s) yscaled ys shifted (dx, dy) enddef;
 
 def clear(expr p) = fill buildcycle(p) withcolor white; enddef;
@@ -7,6 +10,17 @@ def box(expr xa, ya, xb, yb, r) =
   (xb-r, yb) {right} .. {down} (xb, yb-r) ..
   (xb, ya+r) {down} .. {left} (xb-r, ya) ..
   (xa+r, ya) {left} .. {up} (xa, ya+r) .. cycle) scaled sc
+enddef;
+
+def sq =
+image(
+  if show_grid:
+    for a = -10 step 5 until 10:
+      draw (a, -10) -- (a, 10) withpen grid_pen withcolor .5white;
+      draw (-10, a) -- (10, a) withpen grid_pen withcolor .5white;
+    endfor;
+  fi;
+)
 enddef;
 
 def logo_telo(expr s, ys, dx, dy) =
