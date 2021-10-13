@@ -42,7 +42,7 @@ def logo_jan(expr s, ys, dx, dy) =
     clear(jan_b);
     draw jan_b;
     pickup inner_pen;
-    draw ((-2.5, 2) {down} .. {right} (-2, 1.5) .. tension 0.8 .. {dir 100} (1.5, 6) ) tr(s, ys, dx, dy);
+    draw ((-2.5, 2) {down} .. {right} (-2, 1.5) .. tension 0.8 .. {dir 100} (0.5, 6) ) tr(s, ys, dx, dy);
     draw fullcircle scaled 0.5 shifted(-1, 5) tr(s, ys, dx, dy);
     draw sq tr(s, ys, dx, dy);
   );
