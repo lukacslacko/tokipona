@@ -142,7 +142,6 @@ def logo_toki(expr s, ys, dx, dy) =
     toki_e := toki_d shifted (0, -2);
     toki_d := toki_d cutafter toki_c;
     toki_d := toki_d cutbefore toki_c;
-    toki_e := toki_e cutbefore toki_c;
     toki_e := toki_e cutafter toki_c;
     pair q;
     q := toki_c intersectionpoint toki_e;
