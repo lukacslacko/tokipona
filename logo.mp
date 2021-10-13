@@ -28,6 +28,46 @@ image(
 )
 enddef;
 
+def logo_jan(expr s, ys, dx, dy) =
+  image(
+    path jan_a;
+    jan_a = box(-7, 0, 7, 10, 4) tr(s, ys, dx, dy);
+    clear(jan_a)
+    draw jan_a withpen outer_pen;
+    jan_b = ((0, 9) .. {down} (3, 2) .. (10, -7) .. (7, -10) .. (-7, -10) .. (-10, -7) .. (-3, 2) {up} .. cycle) tr(s, ys, dx, dy);
+    clear(jan_b);
+    draw jan_b withpen outer_pen;
+  );
+enddef;
+
+def logo_mi(expr s, ys, dx, dy) =
+  image (
+    path mi_a, mi_b, mi_c;
+    mi_a := box(-10, -10, 10, 10, 2);
+    mi_b := box(-8, -6, 8, 6, 0.5);
+    mi_c := fullcircle scaled 10;
+    clear(mi_a tr(s, ys, dx, dy));
+    draw sq tr(s, ys, dx, dy);
+    draw mi_a tr(s, ys, dx, dy) withpen outer_pen;
+    draw mi_b tr(s, ys, dx, dy) withpen inner_pen;
+    draw mi_c tr(s, ys, dx, dy) withpen inner_pen;
+  )
+enddef;
+
+def logo_moku(expr s, ys, dx, dy) =
+  image (
+    path moku_a;
+    moku_a := 
+      (0, 10) .. (-10, 0) {down} .. (-6, -10) {right} .. {up} (-3, -6) {down} ..
+      {right} (0, -10) {right} .. {up} (3, -6) {down} .. {right} (6, -10) ..
+      {up} (10, 0) .. cycle;
+    moku_a := moku_a rotated 180;
+    clear(moku_a tr(s, ys, dx, dy));
+    draw sq tr(s, ys, dx, dy);
+    draw moku_a tr(s, ys, dx, dy) withpen outer_pen;
+  )  
+enddef;
+
 def logo_telo(expr s, ys, dx, dy) =
   image (
     path telo_a, telo_b, telo_c, telo_d;
@@ -53,35 +93,10 @@ def logo_telo(expr s, ys, dx, dy) =
   )
 enddef;
 
-def logo_mi(expr s, ys, dx, dy) =
-  image (
-    path mi_a, mi_b, mi_c;
-    mi_a := box(-10, -10, 10, 10, 2);
-    mi_b := box(-8, -6, 8, 6, 0.5);
-    mi_c := fullcircle scaled 10;
-    clear(mi_a tr(s, ys, dx, dy));
-    draw mi_a tr(s, ys, dx, dy) withpen outer_pen;
-    draw mi_b tr(s, ys, dx, dy) withpen inner_pen;
-    draw mi_c tr(s, ys, dx, dy) withpen inner_pen;
-  )
-enddef;
-
-def logo_moku(expr s, ys, dx, dy) =
-  image (
-    path moku_a;
-    moku_a := 
-      (0, 10) .. (-10, 0) {down} .. (-6, -10) {right} .. {up} (-3, -6) {down} ..
-      {right} (0, -10) {right} .. {up} (3, -6) {down} .. {right} (6, -10) ..
-      {up} (10, 0) .. cycle;
-    moku_a := moku_a rotated 180;
-    clear(moku_a tr(s, ys, dx, dy));
-    draw moku_a tr(s, ys, dx, dy) withpen outer_pen;
-  )  
-enddef;
-
 beginfig(1);
-draw logo_mi(1, 1, 0, 0);
-draw logo_moku(1, 1, 25, 0);
-draw logo_telo(1, 1, 50, 0);
+draw logo_jan(1, 1, 0, 0);
+draw logo_mi(1, 1, 25, 0);
+draw logo_moku(1, 1, 50, 0);
+draw logo_telo(1, 1, 75, 0);
 endfig;
 end;
