@@ -134,7 +134,7 @@ def logo_toki(expr s, ys, dx, dy) =
     path toki_b, toki_c, toki_d, toki_e;
     toki_b := (7, 2) {dir 200} .. {curl 0.2} (-2, 3);
     draw toki_b tr(s, ys, dx, dy);
-    toki_c := (3, 4) .. (6, -2) .. (3, -8) .. (0, -2) .. cycle;
+    toki_c := (3, 4) .. (6, -2) .. (3, -7) .. (-1, -2) .. cycle;
     toki_c := toki_c cutbefore toki_b;
     toki_c := toki_c cutafter toki_b;
     draw toki_c tr(s, ys, dx, dy);
