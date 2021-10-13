@@ -107,7 +107,9 @@ vowel_transform = {
   "K": Transform(0.7, 0, 3),
 }
 
-table = []
+table = ["""
+beginfig(1);
+"""]
 
 row = 0
 for consonant in consonants:
@@ -167,5 +169,9 @@ for consonant in consonants:
       enddef;
     """)
           
+table.append("""
+endfig;
+end;
+""")
 print("\n".join(mp))
 print("\n".join(table))
