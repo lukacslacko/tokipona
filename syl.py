@@ -118,7 +118,6 @@ for consonant in consonants:
     mp.append(f"""
       def syllable_{consonant}{vowel}(expr scale, yscale, x, y) =
         image(
-          draw grid;
           clear({con[0].path});
     """)    
     for path in con:
@@ -132,6 +131,8 @@ for consonant in consonants:
     mp.append(f"""
           );
           clip tmp to buildcycle({con[0].path});
+          draw tmp;
+          draw grid;
         ) scaled scale yscaled yscale shifted (x, y)
       enddef;
     """)
@@ -139,7 +140,6 @@ for consonant in consonants:
     mp.append(f"""
       def syllable_{consonant}{vowel}n(expr scale, yscale, x, y) =
         image(
-          draw grid;
           clear(nasal_end);
           draw nasal_end withpen outer_pen;
           clear({con[0].path} yscaled 0.75 shifted (0, 2.5));
@@ -156,6 +156,8 @@ for consonant in consonants:
     mp.append(f"""
           );
           clip tmp to {con[0].path};
+          draw tmp;
+          draw grid;
         ) scaled scale yscaled yscale shifted (x, y)
       enddef;
     """)
