@@ -9,5 +9,5 @@ int main() {
   Render render;
   std::cout << input << std::endl;
   
-  parse(input, 7, render);
+  std::cout << parse(input, 7, render) << std::endl;
 }
