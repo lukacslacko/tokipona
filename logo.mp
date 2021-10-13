@@ -123,6 +123,7 @@ beginfig(1);
 draw logo_jan(1, 1, 0, 0);
 draw logo_mi(1, 1, 25, 0);
 draw logo_moku(1, 1, 50, 0);
-draw logo_telo(1, 1, 75, 0);
+draw logo_pona(1, 1, 75, 0);
+draw logo_telo(1, 1, 100, 0);
 endfig;
 end;
