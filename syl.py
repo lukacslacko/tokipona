@@ -117,7 +117,7 @@ for consonant in consonants:
     vow = vowels[vowel]
     mp.append(f"""
       def syllable_{consonant}{vowel}(expr scale, yscale, x, y) =
-        draw image(
+        image(
           draw grid;
           clear({con[0].path});
     """)    
@@ -132,13 +132,13 @@ for consonant in consonants:
     mp.append(f"""
           );
           clip tmp to buildcycle({con[0].path});
-        ) scaled scale yscaled yscale shifted (x, y);
+        ) scaled scale yscaled yscale shifted (x, y)
       enddef;
     """)
 
     mp.append(f"""
       def syllable_{consonant}{vowel}n(expr scale, yscale, x, y) =
-        draw image(
+        image(
           draw grid;
           clear(nasal_end);
           draw nasal_end withpen outer_pen;
@@ -156,7 +156,7 @@ for consonant in consonants:
     mp.append(f"""
           );
           clip tmp to {con[0].path};
-        ) scaled scale yscaled yscale shifted (x, y);
+        ) scaled scale yscaled yscale shifted (x, y)
       enddef;
     """)
     
