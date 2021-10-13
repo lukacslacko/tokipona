@@ -8,7 +8,7 @@ grid_pen := pencircle scaled 0.2bp;
 
 def tr(expr s, ys, dx, dy) = scaled (s) yscaled ys shifted (dx, dy) enddef;
 
-def clear(expr p) = fill buildcycle(p) withcolor white; enddef;
+def clear(expr p) = fill buildcycle(p) withcolor .8white; enddef;
 
 def box(expr xa, ya, xb, yb, r) =
   ((xa, yb-r) {up} .. {right} (xa+r, yb) ..
@@ -123,11 +123,24 @@ def logo_telo(expr s, ys, dx, dy) =
   )
 enddef;
 
+def logo_toki(expr s, ys, dx, dy) =
+  image (
+    path toki_a;
+    toki_a =
+      ((0,0) .. (10, 5) .. {dir 180+45} (8, 3) {dir -60} .. (9, -5) .. (0, -10) .. (-10, -5) {up} .. (-10, 5) .. cycle) tr(s, ys, dx, dy);
+    clear(toki_a);
+    draw toki_a withpen outer_pen;
+    pickup inner_pen;
+    draw ((8, 3) {dir 180+45} .. (6, 2) .. (-2, 3)) tr(s, ys, dx, dy);
+  )
+enddef;
+
 beginfig(1);
 draw logo_jan(1, 1, 0, 0);
 draw logo_mi(1, 1, 25, 0);
 draw logo_moku(1, 1, 50, 0);
 draw logo_pona(1, 1, 75, 0);
 draw logo_telo(1, 1, 100, 0);
+draw logo_toki(1, 1, 125, 0);
 endfig;
 end;
