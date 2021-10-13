@@ -29,7 +29,6 @@ image(
 enddef;
 
 def logo_telo(expr s, ys, dx, dy) =
-  def t = tr(s, ys, dx, dy) enddef;
   image (
     path telo_a, telo_b, telo_c, telo_d;
     telo_a :=
