@@ -134,7 +134,7 @@ def logo_toki(expr s, ys, dx, dy) =
     path toki_b, toki_c, toki_d, toki_e;
     toki_b := (7, 2) {dir 200} .. {curl 0.2} (-2, 3);
     draw toki_b tr(s, ys, dx, dy);
-    toki_c := (3, 4) .. (6, -2) .. (3, -7) .. (-1, -2) .. cycle;
+    toki_c := (3, 4) .. (6, -2) .. (3, -7) {left} .. {up} (-1, -2) .. cycle;
     toki_c := toki_c cutbefore toki_b;
     toki_c := toki_c cutafter toki_b;
     draw toki_c tr(s, ys, dx, dy);
@@ -143,9 +143,7 @@ def logo_toki(expr s, ys, dx, dy) =
     toki_d := toki_d cutafter toki_c;
     toki_d := toki_d cutbefore toki_c;
     toki_e := toki_e cutafter toki_c;
-    pair q;
-    q := toki_c intersectionpoint toki_e;
-    toki_e := toki_e cutafter q;
+    toki_e := toki_e cutafter ((3, -7) {left} .. {up} (-1, -2));
     draw toki_d tr(s, ys, dx, dy);
     draw toki_e tr(s, ys, dx, dy);
     draw (fullcircle scaled 3 shifted (-5, 5)) tr(s, ys, dx, dy);
