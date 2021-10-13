@@ -43,9 +43,13 @@ class Block:
   
 def layout(s: str, render: Render) -> Block:
   s = s.replace(" ", "")
+  print(s)
   pieces, dir = _split(s)
+  print(pieces, dir)
   if len(pieces) == 1:
     word = pieces[0]
+    if word == "":
+      raise Error("empty word")
     if word[0] == "(":
       block = layout(word[1:-1], render)
       return Block("()", block.width(), block.height(), block.x(), block.y(), [block])
