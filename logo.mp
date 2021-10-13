@@ -83,7 +83,7 @@ def logo_moku(expr s, ys, dx, dy) =
   )  
 enddef;
 
-def logo_pona(exr s, ys, dx, dy) =
+def logo_pona(expr s, ys, dx, dy) =
   image(
     path pona_a;
     pona_a := ((-9, 6) .. (-6, 10) {right} .. {down} (-3, 6) {up} .. {down} (3, 6) {up} .. {right} (6, 10) ..
