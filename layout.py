@@ -1,7 +1,7 @@
 from render import Render
 
 class Block:
-  def __init__(self, word: str, width: float, height: float, x: float, y: float, blocks: list[Block]):
+  def __init__(self, word: str, width: float, height: float, x: float, y: float, blocks: list[type["Block"]]):
     self._word = word
     self._width = width
     self._height = height
