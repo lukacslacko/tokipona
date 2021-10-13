@@ -86,7 +86,7 @@ enddef;
 def logo_pona(expr s, ys, dx, dy) =
   image(
     path pona_a;
-    pona_a := ((-9, 6) .. (-10, 8) .. (-6, 10) {right} .. {down} (-3, 6) {up} .. {down} (3, 6) {up} .. {right} (6, 10) ..
+    pona_a := ((-8, 4) {dir 135}  .. (-6, 10) {right} .. {down} (-3, 6) {up} .. {down} (3, 6) {up} .. {right} (6, 10) ..
       {down} (10, 0) .. (0, -10) .. {up} (-10, 0) .. {dir 20} cycle) tr(s, ys, dx, dy);
     clear(pona_a);
     pickup outer_pen;
