@@ -1,6 +1,7 @@
 from dataclasses import dataclass
+from enum import Enum
 
-enum Pen:
+class Pen(Enum):
   INNER = 0
   OUTER = 1
   
