@@ -24,7 +24,7 @@ mp = []
 mp.append("""
 
 boolean show_grid;
-show_grid := True;
+show_grid := true;
 
 pen outer_pen, inner_pen, grid_pen;
 outer_pen := pencircle scaled 1.5bp yscaled 0.2 rotated 30;
