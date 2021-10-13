@@ -31,10 +31,12 @@ enddef;
 def logo_jan(expr s, ys, dx, dy) =
   image(
     path jan_a, jan_b;
-    jan_a = box(-7, 0, 7, 10, 4) tr(s, ys, dx, dy);
+    jan_a = box(-8, 0, 8, 10, 4) tr(s, ys, dx, dy);
     clear(jan_a)
     draw jan_a withpen outer_pen;
-    jan_b = ((0, 9) .. {down} (3, 2) {dir -30} .. (10, -7) .. (7, -10) .. (-7, -10) .. (-10, -7) .. {dir 30} (-3, 2) {up} .. cycle) tr(s, ys, dx, dy);
+    jan_b = (
+      (0, 9) .. {down} (3, 2) {dir -20} .. (10, -7) .. (7, -10) {left} .. {right} (-7, -10) .. (-10, -7) .. {dir 20} (-3, 2) {up} .. cycle
+    ) tr(s, ys, dx, dy);
     clear(jan_b);
     draw jan_b withpen outer_pen;
     draw sq tr(s, ys, dx, dy);
