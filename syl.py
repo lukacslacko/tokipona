@@ -26,9 +26,6 @@ mp = []
 
 mp.append(f"""
 
-boolean show_grid;
-show_grid := {'true' if show_grid else 'false'};
-
 pen outer_pen, inner_pen, grid_pen;
 outer_pen := pencircle scaled 1.5bp yscaled 0.2 rotated 30;
 inner_pen := pencircle scaled 0.7bp yscaled 0.2 rotated 30;
@@ -40,15 +37,16 @@ enddef;
 
 picture grid;
 grid := image(
-  if show_grid:
+"""
+if show_grid:
+  mp.append("""
     for a = -10 step 5 until 10:
       draw (a, -10) -- (a, 10) withpen grid_pen withcolor .5white;
       draw (-10, a) -- (10, a) withpen grid_pen withcolor .5white;
     endfor;
-  fi;
+  """)
+mp.append("""
 );
-
-
 path nasal_contour;
 nasal_contour :=
   (0, -2) .. (-10, -7) {down} .. (-6, -10) {right} .. {up} (-3, -6) {down} ..
