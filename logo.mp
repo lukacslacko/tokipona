@@ -1,0 +1,68 @@
+def tr(expr s, ys, dx, dy) = scaled (s) yscaled ys shifted (dx, dy) enddef;
+
+def clear(expr p) = fill buildcycle(p) withcolor white; enddef;
+
+def box(expr xa, ya, xb, yb, r) =
+  ((xa, yb-r) {up} .. {right} (xa+r, yb) ..
+  (xb-r, yb) {right} .. {down} (xb, yb-r) ..
+  (xb, ya+r) {down} .. {left} (xb-r, ya) ..
+  (xa+r, ya) {left} .. {up} (xa, ya+r) .. cycle) scaled sc
+enddef;
+
+def logo_telo(expr s, ys, dx, dy) =
+  t := tr(s, ys, dx, dy);
+  image (
+    path telo_a, telo_b, telo_c, telo_d;
+    telo_a :=
+      (-10, -10) {dir 45} .. {right} (7, -10) .. tension 1.5 .. (7, -2);
+    telo_b :=
+      (-10, -10) {dir 60} .. {right} (7, -2) .. (8, 4);
+    telo_c :=
+      (-10, -10) {dir 80} .. tension 0.8 .. {right} (8, 4) .. (8, 9) .. (0, 7);
+    telo_d :=
+      (-10, -10) {up} .. {right} (-3, 9) .. (0, 7) .. (2, 6) .. (6, 7) ..
+      {curl 0} (2, 6);
+    clear((telo_a .. {down} cycle) tr(s, ys, dx, dy));
+    clear((telo_b .. {down} cycle) tr(s, ys, dx, dy));
+    clear((telo_c .. {down} cycle) tr(s, ys, dx, dy));
+    clear((telo_d .. {down} cycle) tr(s, ys, dx, dy));
+    draw sq tr(s, ys, dx, dy);
+    draw telo_a tr(s, ys, dx, dy) withpen po;
+    draw telo_b tr(s, ys, dx, dy) withpen po;
+    draw telo_c tr(s, ys, dx, dy) withpen po;
+    draw telo_d tr(s, ys, dx, dy) withpen po;
+  )
+enddef;
+
+def logo_mi(expr s, ys, dx, dy) =
+  image (
+    path mi_a, mi_b, mi_c;
+    mi_a := box(-10, -10, 10, 10, 2);
+    mi_b := box(-8, -6, 8, 6, 0.5);
+    mi_c := fullcircle scaled 10;
+    clear(mi_a tr(s, ys, dx, dy));
+    draw mi_a tr(s, ys, dx, dy) withpen po;
+    draw mi_b tr(s, ys, dx, dy) withpen pi;
+    draw mi_c tr(s, ys, dx, dy) withpen pi;
+  )
+enddef;
+
+def logo_moku(expr s, ys, dx, dy) =
+  image (
+    path moku_a;
+    moku_a := 
+      (0, 10) .. (-10, 0) {down} .. (-6, -10) {right} .. {up} (-3, -6) {down} ..
+      {right} (0, -10) {right} .. {up} (3, -6) {down} .. {right} (6, -10) ..
+      {up} (10, 0) .. cycle;
+    moku_a := moku_a rotated 180;
+    clear(moku_a tr(s, ys, dx, dy));
+    draw moku_a tr(s, ys, dx, dy) withpen po;
+  )  
+enddef;
+
+beginfig(1);
+draw logo_mi(1, 1, 0, 0);
+draw logo_moku(1, 1, 25, 0);
+draw logo_telo(1, 1, 50, 0);
+endfig;
+end;
