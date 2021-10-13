@@ -1,6 +1,7 @@
 #include "parse.h"
 #include "render.h"
 
+#include <iostream>
 #include <string>
 
 int main() {
