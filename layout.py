@@ -71,7 +71,7 @@ def layout(s: str, render: Render) -> Block:
       h += block.height()
     return Block(word, 1, h, 0.5, h/2, [blocks])
     
-def _split(s: str) -> list[str], char:
+def _split(s: str) -> tuple[list[str], char]:
   depth = 0
   brack = 0
   res = []
