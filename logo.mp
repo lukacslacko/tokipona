@@ -45,8 +45,8 @@ def logo_jan(expr s, ys, dx, dy) =
     draw ((-2.5, 2) {down} .. {right} (-2, 1.5) .. tension 0.8 .. {dir 100} (0.5, 6) ) tr(s, ys, dx, dy);
     draw fullcircle scaled 0.5 shifted(-1, 5) tr(s, ys, dx, dy);
     path jan_c, jan_d;
-    jan_c := (-3, -1) -- (4, -6);
-    jan_d := (3, -1) -- (-4, -6);
+    jan_c := (-2, -2) -- (3, -5);
+    jan_d := (2, -2) -- (-3, -5);
     draw jan_c tr(s, ys, dx, dy);
     draw jan_c shifted (-1, -1) tr(s, ys, dx, dy);
     draw jan_d tr(s, ys, dx, dy);
