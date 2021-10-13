@@ -22,7 +22,7 @@
 #include <cstring>
 
 void parse(std::string text, float width, Render render) {
-  text=regex_replace(text,regex("\\s"),"");
+  text=std::regex_replace(text,std::regex("\\s"),"");
   class Block;
   class Block {
     public:
@@ -40,32 +40,32 @@ void parse(std::string text, float width, Render render) {
       float x;
       float y;
     Block(bool ic, std::string t, std::string cc, Block* p, float w, float h, float x, float y) {
-      this.ic=ic;
-      this.t=t;
-      this.cc=cc;
-      this.p=p;
-      this.w=w;
-      this.h=h;
-      this.x=x;
-      this.y=y;
+      this->ic=ic;
+      this->t=t;
+      this->cc=cc;
+      this->p=p;
+      this->w=w;
+      this->h=h;
+      this->x=x;
+      this->y=y;
     }
     ~Block() {
-      for (Block* b : this.c) {
+      for (Block* b : this->c) {
         delete b;
       }
     }
     void scale(float s) {
-      this.w*=s;
-      this.h*=s;
-      for (Block* b : this.c) {
+      this->w*=s;
+      this->h*=s;
+      for (Block* b : this->c) {
         b->scale(s);
-        b->shift(this.x+(b->x-this.x)*s-b->x,this.y+(b->y-this.y)*s-b->y);
+        b->shift(this->x+(b->x-this->x)*s-b->x,this->y+(b->y-this->y)*s-b->y);
       }
     }
     void shift(float x, float y) {
-      this.x+=x;
-      this.y+=y;
-      for (Block* b : this.c) {
+      this->x+=x;
+      this->y+=y;
+      for (Block* b : this->c) {
         b->shift(x, y);
       }
     }
@@ -84,13 +84,13 @@ void parse(std::string text, float width, Render render) {
                 h=b->h;
               }
             }
-            this.w=0;
+            cpb->w=0;
             for (Block* b : cpb->c) {
               b->scale(h/b->h);
-              this.w+=b->w;
+              cpb->w+=b->w;
             }
-            this.h=h;
-            float n=-this.w/2;
+            cpb->h=h;
+            float n=-cpb->w/2;
             for (Block* b : cpb->c) {
               n+=b->w/2;
               b->shift(n, 0);
@@ -103,13 +103,13 @@ void parse(std::string text, float width, Render render) {
                 w=b->w;
               }
             }
-            this.h=0;
+            cpb->h=0;
             for (Block* b : cpb->c) {
               b->scale(w/b->w);
-              this.h+=b->h;
+              cpb->h+=b->h;
             }
-            this.w=w;
-            float n=-this.h/2;
+            cpb->w=w;
+            float n=-cpb->h/2;
             for (Block* b : cpb->c) {
               n+=b->h/2;
               b->shift(0, n);
@@ -128,14 +128,14 @@ void parse(std::string text, float width, Render render) {
         char* c=cpb->cc.data();
         c--;
         bool woo;
-        string t;
+        std::string t;
         int d;
-        string coc;
+        std::string coc;
         while (true) {
           c++;
           if (woo) {
-            if (strchr("[(",*c)) {d++;}
-            if (strchr("])",*c)) {d--;}
+            if (std::strchr("[(",*c)) {d++;}
+            if (std::strchr("])",*c)) {d--;}
             if (d) {
               if (*c==0) {delete m;return;}
               coc+=*c;
@@ -204,6 +204,6 @@ void parse(std::string text, float width, Render render) {
     }
     cdb=cdb->c[cdb->di];
   }
-  render.render()
+  render.render();
   delete m;
 }
