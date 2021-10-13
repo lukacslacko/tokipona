@@ -96,8 +96,8 @@ consonants = {
   ],
   "K": [
     Path("consonant_k_contour", OUTER),
-    Path("consonant_k_a", INNER),
-    Path("consonant_k_b", INNER),
+    Path("consonant_k_a", OUTER),
+    Path("consonant_k_b", OUTER),
   ],
 }
 
@@ -125,8 +125,10 @@ for consonant in consonants:
     mp.append(f"""
       def syllable_{consonant}{vowel}(expr scale, yscale, x, y) =
         image(
-          clear({con[0].path});
-    """)    
+    """)
+    for path in con:
+      if path.pen == OUTER:
+        mp.append("clear({path.path});")
     for path in con:
       mp.append(f"      draw {path.path} withpen {pens[path.pen]};")
     mp.append(f"""
