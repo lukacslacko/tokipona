@@ -1,5 +1,5 @@
 boolean show_grid;
-show_grid := true;
+show_grid := false;
 
 pen outer_pen, inner_pen, grid_pen;
 outer_pen := pencircle scaled 1bp yscaled 0.2 rotated 30;
@@ -44,6 +44,13 @@ def logo_jan(expr s, ys, dx, dy) =
     pickup inner_pen;
     draw ((-2.5, 2) {down} .. {right} (-2, 1.5) .. tension 0.8 .. {dir 100} (0.5, 6) ) tr(s, ys, dx, dy);
     draw fullcircle scaled 0.5 shifted(-1, 5) tr(s, ys, dx, dy);
+    path jan_c, jan_d;
+    jan_c := (-2, -2) -- (4, -6);
+    jan_d := (2, -2) -- (-4, -6);
+    draw jan_c tr(s, ys, dx, dy);
+    draw jan_c shifted (-1, -1) tr(s, ys, dx, dy);
+    draw jan_d tr(s, ys, dx, dy);
+    draw jan_d shifted (1, -1) tr(s, ys, dx, dy);
     draw sq tr(s, ys, dx, dy);
   );
 enddef;
