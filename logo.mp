@@ -144,6 +144,9 @@ def logo_toki(expr s, ys, dx, dy) =
     toki_d := toki_d cutbefore toki_c;
     toki_e := toki_e cutbefore toki_c;
     toki_e := toki_e cutafter toki_c;
+    pair q;
+    q := toki_c intersectionpoint toki_e;
+    toki_e := toki_e cutbefore q;
     draw toki_d tr(s, ys, dx, dy);
     draw toki_e tr(s, ys, dx, dy);
     draw (fullcircle scaled 3 shifted (-5, 5)) tr(s, ys, dx, dy);
