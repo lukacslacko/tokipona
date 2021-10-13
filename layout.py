@@ -49,7 +49,7 @@ def layout(s: str, render: Render) -> Block:
   if len(pieces) == 1:
     word = pieces[0]
     if word == "":
-      raise Error("empty word")
+      return Block("container", 1, 0, 0.5, 0, [])
     if word[0] == "(":
       block = layout(word[1:-1], render)
       return Block("()", block.width(), block.height(), block.x(), block.y(), [block])
