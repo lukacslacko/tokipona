@@ -151,8 +151,10 @@ for consonant in consonants:
         image(
           clear(nasal_contour);
           draw nasal_contour withpen outer_pen;
-          clear(({con[0].path}) yscaled 0.75 shifted (0, 2.5));
-    """)    
+    """)
+    for path in con:
+      if path.pen == OUTER:
+        mp.append(f"clear((path.path}) yscaled 0.75 shifted (0, 2.5));")
     for path in con:
       mp.append(f"      draw ({path.path}) yscaled 0.75 shifted (0, 2.5) withpen {pens[path.pen]};")
     mp.append(f"""
