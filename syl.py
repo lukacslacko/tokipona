@@ -37,7 +37,8 @@ enddef;
 
 picture grid;
 grid := image(
-"""
+""")
+
 if show_grid:
   mp.append("""
     for a = -10 step 5 until 10:
@@ -45,6 +46,7 @@ if show_grid:
       draw (-10, a) -- (10, a) withpen grid_pen withcolor .5white;
     endfor;
   """)
+
 mp.append("""
 );
 path nasal_contour;
