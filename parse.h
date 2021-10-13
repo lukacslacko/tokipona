@@ -21,7 +21,7 @@
 #include "render.h"
 #include <cstring>
 
-void parse(std::string text, float width, Render render) {
+std::string parse(std::string text, float width, Render render) {
   text=std::regex_replace(text,std::regex("\\s"),"");
   class Block;
   class Block {
@@ -137,7 +137,7 @@ void parse(std::string text, float width, Render render) {
             if (std::strchr("[(",*c)) {d++;}
             if (std::strchr("])",*c)) {d--;}
             if (d) {
-              if (*c==0) {delete m;return;}
+              if (*c==0) {delete m;return "rce";}
               coc+=*c;
               continue;
             }
@@ -206,4 +206,5 @@ void parse(std::string text, float width, Render render) {
   }
   render.render();
   delete m;
+  return "";
 }
