@@ -91,6 +91,10 @@ def logo_pona(expr s, ys, dx, dy) =
     clear(pona_a);
     pickup outer_pen;
     draw pona_a tr(s, ys, dx, dy);
+    pickup inner_pen
+    draw ((-8, 4) {dir 20} .. (0, 3) .. (6, 4)) tr(s, ys, dx, dy);
+    draw ((-6, 2) .. (0, 1) .. (6, -3) .. (0, 5) .. cycle) tr(s, ys, dx, dy);
+    draw ((-4, 0) .. (0, -1) .. (4, 0)) tr(s, ys, dx, dy);
   )
 enddef;
 
