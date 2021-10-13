@@ -137,6 +137,7 @@ void parse(std::string text, float width, Render render) {
             if (strchr("[(",*c)) {d++;}
             if (strchr("])",*c)) {d--;}
             if (d) {
+              if (*c==0) {delete m;return;}
               coc+=*c;
               continue;
             }
@@ -151,7 +152,7 @@ void parse(std::string text, float width, Render render) {
               break;
             }
             if (*c=='|') {
-              if (cpb->d=='-') { return; }
+              if (cpb->d=='-') { delete m; return; }
               if (t.size()) {
                 cpb->c.push_back(new Block(false, t, "", cpb, render.width(t), render.height(t), 0, 0));
               }
@@ -160,7 +161,7 @@ void parse(std::string text, float width, Render render) {
               continue;
             }
             if (*c=='-') {
-              if (cpb->d=='|') { return; }
+              if (cpb->d=='|') { delete m; return; }
               if (t.size()) {
                 cpb->c.push_back(new Block(false, t, "", cpb, render.width(t), render.height(t), 0, 0));
               }
