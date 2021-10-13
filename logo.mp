@@ -1,6 +1,11 @@
 boolean show_grid;
 show_grid := true;
 
+pen outer_pen, inner_pen, grid_pen;
+outer_pen := pencircle scaled 1.5bp yscaled 0.2 rotated 30;
+inner_pen := pencircle scaled 0.7bp yscaled 0.2 rotated 30;
+grid_pen := pencircle scaled 0.2bp;
+
 def tr(expr s, ys, dx, dy) = scaled (s) yscaled ys shifted (dx, dy) enddef;
 
 def clear(expr p) = fill buildcycle(p) withcolor white; enddef;
@@ -41,10 +46,11 @@ def logo_telo(expr s, ys, dx, dy) =
     clear((telo_c .. {down} cycle) tr(s, ys, dx, dy));
     clear((telo_d .. {down} cycle) tr(s, ys, dx, dy));
     draw sq tr(s, ys, dx, dy);
-    draw telo_a tr(s, ys, dx, dy) withpen po;
-    draw telo_b tr(s, ys, dx, dy) withpen po;
-    draw telo_c tr(s, ys, dx, dy) withpen po;
-    draw telo_d tr(s, ys, dx, dy) withpen po;
+    pickup outer_pen;
+    draw telo_a tr(s, ys, dx, dy);
+    draw telo_b tr(s, ys, dx, dy);
+    draw telo_c tr(s, ys, dx, dy);
+    draw telo_d tr(s, ys, dx, dy);
   )
 enddef;
 
@@ -55,9 +61,9 @@ def logo_mi(expr s, ys, dx, dy) =
     mi_b := box(-8, -6, 8, 6, 0.5);
     mi_c := fullcircle scaled 10;
     clear(mi_a tr(s, ys, dx, dy));
-    draw mi_a tr(s, ys, dx, dy) withpen po;
-    draw mi_b tr(s, ys, dx, dy) withpen pi;
-    draw mi_c tr(s, ys, dx, dy) withpen pi;
+    draw mi_a tr(s, ys, dx, dy) withpen outer_pen;
+    draw mi_b tr(s, ys, dx, dy) withpen inner_pen;
+    draw mi_c tr(s, ys, dx, dy) withpen inner_pen;
   )
 enddef;
 
@@ -70,7 +76,7 @@ def logo_moku(expr s, ys, dx, dy) =
       {up} (10, 0) .. cycle;
     moku_a := moku_a rotated 180;
     clear(moku_a tr(s, ys, dx, dy));
-    draw moku_a tr(s, ys, dx, dy) withpen po;
+    draw moku_a tr(s, ys, dx, dy) withpen outer_pen;
   )  
 enddef;
 
