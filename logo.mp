@@ -127,7 +127,7 @@ def logo_toki(expr s, ys, dx, dy) =
   image (
     path toki_a;
     toki_a =
-      ((0,10) .. (10, 5) .. {dir 220} (8, 3) {dir -60} .. (9, -7) .. (0, -10) .. (-10, -5) {up} .. (-10, 5) .. cycle) tr(s, ys, dx, dy);
+      ((0,10) .. (10, 5) .. {dir 220} (8, 3) {dir -60} .. (9, -7) .. (0, -10) .. (-10, -5) {up} ... (-10, 5) .. cycle) tr(s, ys, dx, dy);
     clear(toki_a);
     draw toki_a withpen outer_pen;
     pickup inner_pen;
