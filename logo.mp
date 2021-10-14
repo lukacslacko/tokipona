@@ -150,13 +150,3 @@ def logo_toki(expr s, ys, dx, dy) =
     draw (fullcircle scaled 0.3 shifted (-5, 5)) tr(s, ys, dx, dy);
   )
 enddef;
-
-beginfig(1);
-draw logo_jan(1, 1, 0, 0);
-draw logo_mi(1, 1, 25, 0);
-draw logo_moku(1, 1, 50, 0);
-draw logo_pona(1, 1, 75, 0);
-draw logo_telo(1, 1, 100, 0);
-draw logo_toki(1, 1, 125, 0);
-endfig;
-end;
