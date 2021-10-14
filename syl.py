@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-show_grid = True
-show_syls = True
+show_grid = False
+show_syls = False
 
 INNER = 0
 OUTER = 1
