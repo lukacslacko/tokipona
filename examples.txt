@@ -1,11 +1,7 @@
-((toki | pona) - li[toki | pona]) | .[]
-
-(toki - pona) | li[toki - pona] | .[]
-
-(mi - nimi) | (jan - cart[La Si]) | .[]
-
-(mi - nimi - jan) | cart[La Si] | .[]
-
-(Ka - La - (Ma | Pa)) | (lili) | (((Ke - Le) | Me) - (Ki | (Li - Mi)))
-
-(nasin mani) | li[ike] | .[]
+(((jan|utala)-(pona|ni))
+ |li[lawa]
+ |.[])
+-
+((mi-lawa)
+ |e[(jan|utala)-(pona|ni)]
+ |.[])
