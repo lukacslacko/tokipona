@@ -9,6 +9,15 @@ class Block:
     self._y = y
     self._blocks = blocks
     
+  def render(self, render: Render) -> None:
+    if len(self._blocks) == 0:
+      render.word(self._word, self._x, self._y, self._width, self._height)
+    else:
+      for block in self._blocks:
+        block.render(render)
+      if self._word != "":
+        render.container(self._word, self._x, self._y, self._width, self._height)
+    
   def scale(self, scale: float) -> None:
     self._width *= scale
     self._height *= scale
@@ -44,20 +53,18 @@ class Block:
 def layout(s: str, render: Render) -> Block:
   s = s.replace(" ", "")
   s = s.replace("\n", "")
-  print(s)
   pieces, dir = _split(s)
-  print(pieces, dir)
   if len(pieces) == 1:
     word = pieces[0]
     if word == "":
-      return Block("container", 1, 0, 0.5, 0, [])
+      return None  # empty container's content, like after the period in "(mi-toki)|.[]".
     if word[0] == "(":
       block = layout(word[1:-1], render)
-      return Block("()", block.width(), block.height(), block.x(), block.y(), [block])
+      return Block("", block.width(), block.height(), block.x(), block.y(), [block])
     elif "[" in word:
       i = word.index("[")
       block = layout(word[i+1:-1], render)
-      return Block(word[:i], block.width(), block.height(), block.x(), block.y(), [block])
+      return Block(word[:i], block.width(), block.height(), block.x(), block.y(), [] if block is None else [block])
     else:
       w = render.width(word)
       h = render.height(word)
@@ -118,5 +125,5 @@ import sys
 if __name__ == "__main__":
   f = open(sys.argv[1], "r")
   render = Render()
-  layout(f.read(), render)
+  layout(f.read(), render).render(render)
   render.render()
