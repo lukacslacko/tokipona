@@ -178,4 +178,5 @@ endfig;
 end;
 """)
 print("\n".join(mp))
-print("\n".join(table))
+if show_syls:
+  print("\n".join(table))
