@@ -44,7 +44,7 @@ class Render:
     print("beginfig(1);")
     for glyph in reversed(self._glyphs):
       if isinstance(glyph, Glyph):
-        print(f"draw logo_{glyph.name}({glyph.size}, {glyph.yscale}, {glyph.x}, {glyph.y});")
+        print(f"draw logo_{glyph.name}({glyph.size/20}, {glyph.yscale}, {glyph.x}, {glyph.y});")
       if isinstance(glyph, Container):
         print(f"draw container_{glyph.name}({glyph.x}, {glyph.y}, {glyph.w}, {glyph.h});")
     print("endfig;")
