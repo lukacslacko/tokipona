@@ -80,7 +80,7 @@ def layout(s: str, render: Render) -> Block:
     for block in blocks:
       block.shift(w + block.width() / 2 - block.x(), block.height() / 2 - block.y())
       w += block.width()
-    return Block("block", w, 1, w/2, 0.5, blocks)
+    return Block("", w, 1, w/2, 0.5, blocks)
   else:
     for block in blocks:
       block.scale(1 / block.width())
@@ -88,7 +88,7 @@ def layout(s: str, render: Render) -> Block:
     for block in blocks:
       block.shift(block.width() / 2 - block.x(), h + block.height() / 2 - block.y())
       h += block.height()
-    return Block("block", 1, h, 0.5, h/2, blocks)
+    return Block("", 1, h, 0.5, h/2, blocks)
     
 def _split(s: str) -> tuple[list[str], str]:
   depth = 0
