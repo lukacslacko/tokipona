@@ -9,6 +9,9 @@ class Block:
     self._y = y
     self._blocks = blocks
     
+  def set_word(self, word: str) -> None:
+    self._word = word;
+    
   def render(self, render: Render) -> None:
     if len(self._blocks) == 0:
       render.word(self._word, self._x, self._y, self._width, self._height)
@@ -64,10 +67,15 @@ def layout(s: str, render: Render) -> Block:
     elif "[" in word:
       i = word.index("[")
       block = layout(word[i+1:-1], render)
+      cmd = word[:i]
       if block is None:
         return Block(word[:i], 1, 0, 0.5, 0, [])
       else:
-        return Block(word[:i], block.width(), block.height(), block.x(), block.y(), [block])
+        new_block = Block(word[:i], block.width(), block.height(), block.x(), block.y(), [block])
+        if cmd[0] == "=":
+          new_block.set_word("")
+          new_block.scale(float(cmd[1]) / block.width())
+        return new_block
     else:
       w = render.width(word)
       h = render.height(word)
