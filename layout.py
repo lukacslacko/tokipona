@@ -74,7 +74,7 @@ def layout(s: str, render: Render) -> Block:
         new_block = Block(word[:i], block.width(), block.height(), block.x(), block.y(), [block])
         if cmd[0] == "=":
           new_block.set_word("")
-          new_block.scale(float(cmd[1]) / block.width())
+          new_block.scale(float(cmd[1:]) / block.width())
         return new_block
     else:
       w = render.width(word)
