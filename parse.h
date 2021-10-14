@@ -115,6 +115,9 @@ std::string parse(std::string text, float width, Render render) {
               b->shift(0, n);
               n+=b->h/2;
             }
+          } else if (cpb->c.size()) {
+            cpb->w=cpb->c[0]->w;
+            cpb->h=cpb->c[0]->h;
           }
           cpb=cpb->p;
           if (cpb==nullptr) {
