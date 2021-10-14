@@ -39,8 +39,13 @@ class Render:
     self._glyphs.append(Container(word, x, y, w, h))
   
   def render(self):
+    print("input syl;")
+    print("input logo;")
+    print("beginfig(1);")
     for glyph in reversed(self._glyphs):
       if isinstance(glyph, Glyph):
         print(f"draw logo_{glyph.name}({glyph.size}, {glyph.yscale}, {glyph.x}, {glyph.y});")
       if isinstance(glyph, Container):
         print(f"draw container_{glyph.name}({glyph.x}, {glyph.y}, {glyph.w}, {glyph.h});")
+    print("endfig;")
+    print("end;")
