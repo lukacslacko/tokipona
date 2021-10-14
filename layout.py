@@ -43,6 +43,7 @@ class Block:
   
 def layout(s: str, render: Render) -> Block:
   s = s.replace(" ", "")
+  s = s.replace("\n", "")
   print(s)
   pieces, dir = _split(s)
   print(pieces, dir)
@@ -112,12 +113,10 @@ def _split(s: str) -> tuple[list[str], str]:
     raise Error(f"depth {depth}, brack {brack}")
   return res, sep
 
-render = Render()
-print(layout("(a - b) | c", render))
-print()
-print(layout("(x | y) - z", render))
-print()
+import sys
 
-ex1 = layout("(((jan|utala)-(pona|ni))|li[lawa]|.[])-((mi-lawa)|e[(jan|utala)-(pona|ni)]|.[])", render)
-ex1.scale(6)
-print(ex1)
+if __name__ == "__main__":
+  f = open(sys.argv[1], "r")
+  render = Render()
+  layout(f.read(), render)
+  render.render()
