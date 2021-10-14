@@ -64,7 +64,10 @@ def layout(s: str, render: Render) -> Block:
     elif "[" in word:
       i = word.index("[")
       block = layout(word[i+1:-1], render)
-      return Block(word[:i], block.width(), block.height(), block.x(), block.y(), [] if block is None else [block])
+      if block is None:
+        return Block(word[:i], 1, 0, 0.5, 0, [])
+      else:
+        return Block(word[:i], block.width(), block.height(), block.x(), block.y(), [block])
     else:
       w = render.width(word)
       h = render.height(word)
