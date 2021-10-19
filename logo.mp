@@ -17,6 +17,10 @@ def box(expr xa, ya, xb, yb, r) =
   (xa+r, ya) {left} .. {up} (xa, ya+r) .. cycle)
 enddef;
 
+def container_li(expr xa, ya, xb, yb) =
+  box(xa-5, ya-5, xb+5, yb+5, 5)
+enddef;
+
 def sq =
 image(
   if show_grid:
