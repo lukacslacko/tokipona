@@ -17,8 +17,8 @@ def box(expr xa, ya, xb, yb, r) =
   (xa+r, ya) {left} .. {up} (xa, ya+r) .. cycle)
 enddef;
 
-def container_li(expr xa, ya, xb, yb) =
-  box(xa-5, ya-5, xb+5, yb+5, 5)
+def container_li(expr x, y, w, h) =
+  box(x-15, y-15, x+w+5, y+h+5, 5)
 enddef;
 
 def sq =
