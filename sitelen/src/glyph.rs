@@ -1,9 +1,9 @@
 pub struct Glyph {
-    x: f32,
-    y: f32,
-    width: f32,
-    height: f32,
-    glyphs: Vec<Box<dyn GlyphTr>>,
+    pub x: f32,
+    pub y: f32,
+    pub width: f32,
+    pub height: f32,
+    pub glyphs: Vec<Box<dyn GlyphTr>>,
 }
 
 impl Glyph {
@@ -37,4 +37,14 @@ pub trait GlyphTr {
     }
 
     fn wrap(&mut self, glyphs: Vec<Box<dyn GlyphTr>>, direction: Direction) {}
+
+    fn mut_glyph(&self) -> &mut Glyph;
+
+    fn scale_width_to(&mut self, new_width: f32) {
+        let mut_glyph = self.mut_glyph();
+        let scale_factor = new_width / mut_glyph.width;
+        mut_glyph.width *= scale_factor;
+        mut_glyph.height *= scale_factor;
+        
+    }
 }
