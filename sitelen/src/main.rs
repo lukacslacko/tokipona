@@ -41,7 +41,7 @@ fn main() {
             ])),
         ]),
     ]));
-    let width = 200.0;
+    let width = 300.0;
     let height = width / glyph.aspect_ratio();
     let gap = 20.0;
     let rect = Rect {

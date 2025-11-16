@@ -25,5 +25,6 @@ pub type SVG = Vec<String>;
 pub trait Glyph {
     fn layout_within(&self, rect: &Rect) -> SVG;
 
+    // width / height
     fn aspect_ratio(&self) -> f32;
 }
