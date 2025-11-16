@@ -21,7 +21,8 @@ impl Glyph for StackGlyph {
 
         match self.direction {
             Direction::Horizontal => {
-                let total_aspect: f32 = self.children.iter().map(|child| child.aspect_ratio()).sum();
+                let total_aspect: f32 =
+                    self.children.iter().map(|child| child.aspect_ratio()).sum();
                 let mut current_x = rect.x;
                 for child in &self.children {
                     let child_width = rect.width * (child.aspect_ratio() / total_aspect);
@@ -31,23 +32,29 @@ impl Glyph for StackGlyph {
                         width: child_width,
                         height: rect.height,
                     };
-                    result.extend(child.layout_within(&child_rect));
+                    // Instead of extend, prepend, for nicer overlap.
+                    result.splice(0..0, child.layout_within(&child_rect));
                     current_x += child_width;
                 }
             }
             Direction::Vertical => {
-                let total_inverse_aspect: f32 =
-                    self.children.iter().map(|child| 1.0 / child.aspect_ratio()).sum();
+                let total_inverse_aspect: f32 = self
+                    .children
+                    .iter()
+                    .map(|child| 1.0 / child.aspect_ratio())
+                    .sum();
                 let mut current_y = rect.y;
                 for child in &self.children {
-                    let child_height = rect.height * ((1.0 / child.aspect_ratio()) / total_inverse_aspect);
+                    let child_height =
+                        rect.height * ((1.0 / child.aspect_ratio()) / total_inverse_aspect);
                     let child_rect = Rect {
                         x: rect.x,
                         y: current_y,
                         width: rect.width,
                         height: child_height,
                     };
-                    result.extend(child.layout_within(&child_rect));
+                    // Instead of extend, prepend, for nicer overlap.
+                    result.splice(0..0, child.layout_within(&child_rect));
                     current_y += child_height;
                 }
             }

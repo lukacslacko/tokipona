@@ -6,7 +6,7 @@ use sitelen::glyphs::stack::StackGlyph;
 fn circ(color: &str) -> Box<dyn Glyph> {
     Box::new(SimpleGlyph::new(
         vec![format!(
-            "<circle cx='50' cy='50' r='50' stroke='black' stroke-width='2' vector-effect='non-scaling-stroke' fill='{}' />",
+            "<circle cx='50' cy='50' r='55' stroke='black' stroke-width='2' vector-effect='non-scaling-stroke' fill='{}' />",
             color
         )],
         1.0,
