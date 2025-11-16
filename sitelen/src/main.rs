@@ -1,4 +1,5 @@
 use sitelen::glyph::{Direction, Glyph, Rect};
+use sitelen::glyphs::li::LiGlyph;
 use sitelen::glyphs::simple::SimpleGlyph;
 use sitelen::glyphs::stack::StackGlyph;
 
@@ -20,16 +21,22 @@ fn vert(children: Vec<Box<dyn Glyph>>) -> Box<dyn Glyph> {
     Box::new(StackGlyph::new(children, Direction::Vertical))
 }
 
+fn li(child: Box<dyn Glyph>) -> Box<dyn Glyph> {
+    Box::new(LiGlyph::new(child))
+}
+
 fn main() {
     let glyph = vert(vec![
         horiz(vec![circ("red"), circ("green"), circ("blue")]),
         horiz(vec![
             circ("yellow"),
-            circ("purple"),
-            vert(vec![circ("cyan"), circ("magenta")]),
+            li(horiz(vec![
+                circ("purple"),
+                vert(vec![circ("cyan"), circ("magenta")]),
+            ])),
         ]),
     ]);
-    let width = 100.0;
+    let width = 200.0;
     let height = width / glyph.aspect_ratio();
     let gap = 20.0;
     let rect = Rect {
