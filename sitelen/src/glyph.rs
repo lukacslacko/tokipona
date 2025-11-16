@@ -37,14 +37,4 @@ pub trait GlyphTr {
     }
 
     fn wrap(&mut self, glyphs: Vec<Box<dyn GlyphTr>>, direction: Direction) {}
-
-    fn mut_glyph(&self) -> &mut Glyph;
-
-    fn scale_width_to(&mut self, new_width: f32) {
-        let mut_glyph = self.mut_glyph();
-        let scale_factor = new_width / mut_glyph.width;
-        mut_glyph.width *= scale_factor;
-        mut_glyph.height *= scale_factor;
-        
-    }
 }
